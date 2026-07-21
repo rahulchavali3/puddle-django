@@ -1,0 +1,115 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+
+<div class="min-h-[70vh] flex items-center justify-center">
+
+    <div class="w-full max-w-md">
+
+        <!-- Login Card -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+
+            <!-- Heading -->
+            <div class="text-center mb-8">
+
+                <h1 class="text-3xl font-bold text-slate-800">
+                    Welcome back
+                </h1>
+
+            </div>
+
+
+            <form method="post" action=".">
+
+                {% csrf_token %}
+
+
+                <!-- Username -->
+                <div class="mb-5">
+
+                    <label class="block mb-2 font-semibold text-slate-700">
+                        Username
+                    </label>
+
+                    {{ form.username }}
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="mb-5">
+
+                    <label class="block mb-2 font-semibold text-slate-700">
+                        Password
+                    </label>
+
+                    {{ form.password }}
+
+                </div>
+
+
+                <!-- Errors -->
+                {% if form.errors or form.non_field_errors %}
+
+                    <div class="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl">
+
+                        {% for field in form %}
+
+                            {% for error in field.errors %}
+
+                                <p class="text-sm text-red-600">
+                                    {{ error }}
+                                </p>
+
+                            {% endfor %}
+
+                        {% endfor %}
+
+
+                        {% for error in form.non_field_errors %}
+
+                            <p class="text-sm text-red-600">
+                                {{ error }}
+                            </p>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="w-full py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition duration-300 shadow-sm hover:shadow-md"
+                >
+                    Log in
+                </button>
+
+            </form>
+
+
+            <!-- Signup Link -->
+            <p class="mt-6 text-center text-slate-500">
+
+                Don't have an account?
+
+                <a
+                    href="{% url 'core:signup' %}"
+                    class="font-semibold text-teal-600 hover:text-teal-700"
+                >
+                    Sign up
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,294 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    About
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto">
+
+
+    <!-- Hero Section -->
+    <section class="text-center py-16">
+
+        <div class="inline-block mb-5 px-4 py-2 bg-teal-50 text-teal-700 rounded-full text-sm font-semibold">
+            Your local marketplace
+        </div>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-800">
+            Buy less randomly.
+            <span class="text-teal-600">
+                Find more meaningfully.
+            </span>
+        </h1>
+
+        <p class="max-w-2xl mx-auto mt-6 text-lg leading-8 text-slate-500">
+            Puddle is a simple marketplace where people can discover,
+            buy, and sell items with ease.
+        </p>
+
+        <div class="mt-8 flex justify-center gap-4">
+
+            <a
+                href="{% url 'item:items' %}"
+                class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition shadow-sm"
+            >
+                Browse Items
+            </a>
+
+            {% if request.user.is_authenticated %}
+
+                <a
+                    href="{% url 'item:new' %}"
+                    class="px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition shadow-sm"
+                >
+                    Sell an Item
+                </a>
+
+            {% else %}
+
+                <a
+                    href="{% url 'core:signup' %}"
+                    class="px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition shadow-sm"
+                >
+                    Join Puddle
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+    <!-- What is Puddle -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-12">
+
+        <div>
+
+            <p class="mb-3 text-sm font-bold uppercase tracking-widest text-teal-600">
+                What is Puddle?
+            </p>
+
+            <h2 class="text-4xl font-bold text-slate-800">
+                A simpler way to buy and sell.
+            </h2>
+
+            <p class="mt-6 text-lg leading-8 text-slate-500">
+                Puddle makes it easier for people to give items a second life.
+                Whether you are looking for something useful or clearing out
+                things you no longer need, Puddle helps you connect with the
+                right people.
+            </p>
+
+            <p class="mt-4 text-lg leading-8 text-slate-500">
+                No complicated process. No unnecessary distractions.
+                Just discover, connect, and find what you need.
+            </p>
+
+        </div>
+
+
+        <div class="bg-teal-600 rounded-3xl p-10 text-white">
+
+            <div class="text-6xl mb-6">
+                ♻
+            </div>
+
+            <h3 class="text-3xl font-bold">
+                Give things a second life.
+            </h3>
+
+            <p class="mt-5 text-lg leading-8 text-teal-100">
+                The item you no longer need might be exactly what someone
+                else has been looking for.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- How It Works -->
+    <section class="py-16">
+
+        <div class="text-center mb-12">
+
+            <p class="mb-3 text-sm font-bold uppercase tracking-widest text-teal-600">
+                How it works
+            </p>
+
+            <h2 class="text-4xl font-bold text-slate-800">
+                Simple by design.
+            </h2>
+
+            <p class="mt-4 text-lg text-slate-500">
+                Everything you need. Nothing you don't.
+            </p>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+            <!-- Step 1 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+
+                <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-teal-100 text-teal-700 text-xl font-bold">
+                    1
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-slate-800">
+                    Discover
+                </h3>
+
+                <p class="mt-4 text-slate-500 leading-7">
+                    Browse items from different categories and find something
+                    that catches your eye.
+                </p>
+
+            </div>
+
+
+            <!-- Step 2 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+
+                <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-teal-100 text-teal-700 text-xl font-bold">
+                    2
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-slate-800">
+                    Connect
+                </h3>
+
+                <p class="mt-4 text-slate-500 leading-7">
+                    Found something you like? Connect with the seller and
+                    start a conversation.
+                </p>
+
+            </div>
+
+
+            <!-- Step 3 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-8">
+
+                <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-teal-100 text-teal-700 text-xl font-bold">
+                    3
+                </div>
+
+                <h3 class="mt-6 text-2xl font-bold text-slate-800">
+                    Make it yours
+                </h3>
+
+                <p class="mt-4 text-slate-500 leading-7">
+                    Find the right item, connect with the seller, and give
+                    something useful a new home.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Why Puddle -->
+    <section class="bg-slate-100 rounded-3xl px-8 py-14 md:px-16">
+
+        <div class="max-w-3xl">
+
+            <p class="mb-3 text-sm font-bold uppercase tracking-widest text-teal-600">
+                Why Puddle?
+            </p>
+
+            <h2 class="text-4xl font-bold text-slate-800">
+                Built around people, not complicated systems.
+            </h2>
+
+            <p class="mt-6 text-lg text-slate-500 leading-8">
+                We believe buying and selling things should feel simple.
+                Puddle focuses on making the experience clear, direct,
+                and easy to use.
+            </p>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+
+
+            <div>
+
+                <h3 class="text-xl font-bold text-slate-800">
+                    Simple
+                </h3>
+
+                <p class="mt-3 text-slate-500 leading-7">
+                    A clean experience that helps you find what you need
+                    without unnecessary complexity.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3 class="text-xl font-bold text-slate-800">
+                    Connected
+                </h3>
+
+                <p class="mt-3 text-slate-500 leading-7">
+                    Connect directly with sellers and communicate through
+                    the platform.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3 class="text-xl font-bold text-slate-800">
+                    Community-driven
+                </h3>
+
+                <p class="mt-3 text-slate-500 leading-7">
+                    Every listing comes from someone who has something
+                    another person might need.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Call to Action -->
+    <section class="text-center py-20">
+
+        <h2 class="text-4xl font-bold text-slate-800">
+            Ready to find something?
+        </h2>
+
+        <p class="mt-4 text-lg text-slate-500">
+            Explore items and discover your next great find.
+        </p>
+
+        <a
+            href="{% url 'item:items' %}"
+            class="inline-block mt-8 px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white text-lg font-semibold rounded-xl transition shadow-sm"
+        >
+            Explore Puddle
+        </a>
+
+    </section>
+
+
+</div>
+
+{% endblock content %}

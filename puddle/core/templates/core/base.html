@@ -1,0 +1,332 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <title>{% block title %}{% endblock %} | Puddle</title>
+    </head>
+
+    <body class="bg-slate-50 text-slate-800">
+
+        <!-- Navigation -->
+        <nav class="bg-teal-50 border-b border-teal-100">
+
+            <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+
+            <a
+                href="/"
+                class="flex items-center gap-3 group"
+            >
+                <div
+                    class="w-11 h-11 flex items-center justify-center rounded-2xl bg-teal-600 text-white text-2xl font-extrabold shadow-md group-hover:bg-teal-700 transition"
+                >
+                    P
+                </div>
+
+                <div class="leading-none">
+
+                    <span
+                        class="block text-2xl font-extrabold text-slate-800 group-hover:text-teal-600 transition"
+                    >
+                        Puddle
+                    </span>
+
+                    <span
+                        class="block mt-1 text-xs text-slate-400 tracking-wide"
+                    >
+                        Your local marketplace
+                    </span>
+
+                </div>
+            </a>
+
+
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-3">
+
+                    {% if request.user.is_authenticated %}
+
+                        <a
+                            href="/"
+                            class="flex items-center gap-2 px-4 py-2 rounded-xl text-slate-600
+                                hover:bg-teal-100 hover:text-teal-700 transition"
+                        >
+                            <!-- Home Icon -->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"
+                                />
+                            </svg>
+
+                            <span class="font-medium">
+                                Home
+                            </span>
+                        </a>
+
+                        <!-- New Item -->
+                        <a
+                            href="{% url 'item:new' %}"
+                            class="px-4 py-2 font-semibold text-slate-600 hover:text-teal-600 transition"
+                        >
+                            Add New Item
+                        </a>
+
+
+                        <!-- Browse -->
+                        <a
+                            href="{% url 'item:items' %}"
+                            class="px-4 py-2 font-semibold text-slate-600 hover:text-teal-600 transition"
+                        >
+                            Browse
+                        </a>
+
+
+                        <!-- Inbox -->
+                        <a
+                            href="{% url 'conversation:inbox' %}"
+                            class="px-5 py-2.5 font-semibold bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition shadow-sm"
+                        >
+                            Inbox
+                        </a>
+
+
+                        <!-- Dashboard -->
+                        <a
+                            href="{% url 'dashboard:index' %}"
+                            class="px-5 py-2.5 font-semibold bg-slate-700 text-white rounded-xl hover:bg-slate-800 transition shadow-sm"
+                        >
+                            Dashboard
+                        </a>
+
+
+                        <!-- Profile Indicator -->
+                        <div class="relative group">
+
+                            <!-- User Initial -->
+                            <div
+                                class="w-11 h-11 flex items-center justify-center rounded-full bg-teal-600 text-white text-lg font-bold cursor-pointer shadow-sm hover:bg-teal-700 transition"
+                            >
+                                {{ request.user.username|first|upper }}
+                            </div>
+
+
+                            <!-- Profile Popup -->
+                            <div
+                                class="absolute right-0 top-14 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+                            >
+
+                                <!-- User Information -->
+                                <div class="flex items-center gap-4 mb-4">
+
+                                    <!-- Larger Initial -->
+                                    <div
+                                        class="w-12 h-12 flex items-center justify-center rounded-full bg-teal-600 text-white text-xl font-bold"
+                                    >
+                                        {{ request.user.username|first|upper }}
+                                    </div>
+
+
+                                    <div>
+
+                                        <p class="font-bold text-slate-800">
+                                            {{ request.user.username }}
+                                        </p>
+
+                                        <p class="text-sm text-slate-500">
+                                            Puddle Member
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Email -->
+                                <div class="border-t border-slate-100 pt-4">
+
+                                    <p class="text-sm text-slate-500">
+                                        Email
+                                    </p>
+
+                                    <p class="text-sm font-medium text-slate-700 break-words">
+                                        {{ request.user.email }}
+                                    </p>
+
+                                </div>
+
+
+                                <!-- Logout -->
+                                <div class="border-t border-slate-100 mt-4 pt-4">
+
+                                    <form
+                                        method="post"
+                                        action="{% url 'core:logout' %}"
+                                    >
+
+                                        {% csrf_token %}
+
+                                        <button
+                                            type="submit"
+                                            class="w-full py-2.5 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition"
+                                        >
+                                            Logout
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    {% else %}
+
+
+                        <!-- Sign Up -->
+                        <a
+                            href="{% url 'core:signup' %}"
+                            class="px-5 py-2.5 font-semibold bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition shadow-sm"
+                        >
+                            Sign up
+                        </a>
+
+
+                        <!-- Log In -->
+                        <a
+                            href="{% url 'core:login' %}"
+                            class="px-5 py-2.5 font-semibold bg-slate-700 text-white rounded-xl hover:bg-slate-800 transition shadow-sm"
+                        >
+                            Log in
+                        </a>
+
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+        <!-- Main Content -->
+        <main class="min-h-screen">
+
+            <div class="max-w-7xl mx-auto px-6 py-8">
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-white">
+
+            <div class="max-w-7xl mx-auto px-6 py-12">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+
+                    <!-- About -->
+                    <div>
+
+                        <h3 class="mb-5 text-lg font-semibold text-white">
+                            About Puddle
+                        </h3>
+
+                        <p class="max-w-xl text-slate-400 leading-7">
+                            Puddle is a simple marketplace where people can discover,
+                            buy, and sell items with ease.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Menu -->
+                    <div>
+
+                        <h3 class="mb-5 text-lg font-semibold text-white">
+                            Menu
+                        </h3>
+
+                        <ul class="space-y-3">
+
+                            <li>
+                                <a
+                                    href="{% url 'core:about' %}"
+                                    class="text-slate-400 hover:text-teal-400 transition"
+                                >
+                                    About
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a
+                                    href="{% url 'core:contact' %}"
+                                    class="text-slate-400 hover:text-teal-400 transition"
+                                >
+                                    Contact
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a
+                                    href="{% url 'core:policy' %}"
+                                    class="text-slate-400 hover:text-teal-400 transition"
+                                >
+                                    Privacy Policy
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-slate-400 hover:text-teal-400 transition"
+                                >
+                                    Terms of Use
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Copyright -->
+                <div class="mt-12 pt-6 border-t border-slate-700">
+
+                    <p class="text-sm text-slate-500">
+                        © 2026 Puddle. All rights reserved.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
+</html>

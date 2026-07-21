@@ -1,0 +1,140 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Conversation{% endblock %}
+
+{% block content %}
+
+<div class="max-w-4xl mx-auto">
+
+    <!-- Conversation Header -->
+    <div class="mb-6">
+
+        <a
+            href="{% url 'conversation:inbox' %}"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-teal-600 transition"
+        >
+            ← Back to Inbox
+        </a>
+
+        <h1 class="mt-4 text-3xl font-bold text-slate-800">
+            Conversation
+        </h1>
+
+    </div>
+
+
+    <!-- Chat Container -->
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+
+
+        <!-- Messages -->
+        <div class="p-6 space-y-6">
+
+            {% for message in conversation.messages.all %}
+
+                {% if message.created_by == request.user %}
+
+                    <!-- Current User Message -->
+                    <div class="flex justify-end">
+
+                        <div class="max-w-xl">
+
+                            <div class="flex items-center justify-end gap-3 mb-2">
+
+                                <span class="text-xs text-slate-400">
+                                    {{ message.created_at|date:"M d, Y · h:i A" }}
+                                </span>
+
+                                <span class="text-sm font-semibold text-slate-700">
+                                    You
+                                </span>
+
+                            </div>
+
+                            <div class="px-5 py-3 bg-teal-600 text-white rounded-2xl rounded-br-md">
+
+                                <p class="leading-7">
+                                    {{ message.content }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                {% else %}
+
+                    <!-- Other User Message -->
+                    <div class="flex justify-start">
+
+                        <div class="max-w-xl">
+
+                            <div class="flex items-center gap-3 mb-2">
+
+                                <div
+                                    class="w-8 h-8 flex items-center justify-center rounded-full bg-teal-100 text-teal-700 font-bold"
+                                >
+                                    {{ message.created_by.username|first|upper }}
+                                </div>
+
+                                <span class="text-sm font-semibold text-slate-700">
+                                    {{ message.created_by.username }}
+                                </span>
+
+                                <span class="text-xs text-slate-400">
+                                    {{ message.created_at|date:"M d, Y · h:i A" }}
+                                </span>
+
+                            </div>
+
+                            <div class="px-5 py-3 bg-slate-100 text-slate-700 rounded-2xl rounded-bl-md">
+
+                                <p class="leading-7">
+                                    {{ message.content }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- Message Input -->
+        <div class="border-t border-slate-200 bg-slate-50 p-5">
+
+            <form method="post" action="." class="flex items-end gap-3">
+
+                {% csrf_token %}
+
+                <div class="flex-1">
+
+                    {{ form.content }}
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition"
+                >
+                    Send
+                </button>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

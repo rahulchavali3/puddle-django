@@ -1,0 +1,140 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Contact
+{% endblock title %}
+
+{% block content %}
+
+<div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+
+        <h1 class="text-4xl font-bold text-slate-800">
+            Get in touch
+        </h1>
+
+        <p class="mt-4 text-lg text-slate-500">
+            Have a question about Puddle? We'd love to hear from you.
+        </p>
+
+    </div>
+
+
+    <!-- Contact Card -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Information -->
+        <div class="bg-teal-600 rounded-2xl p-8 text-white">
+
+            <h2 class="text-2xl font-bold mb-6">
+                Let's talk
+            </h2>
+
+            <p class="text-teal-100 leading-7">
+                Whether you have a question, feedback, or need help using
+                Puddle, feel free to reach out.
+            </p>
+
+            <div class="mt-10 space-y-6">
+
+                <div>
+                    <p class="text-sm text-teal-200">
+                        Email
+                    </p>
+
+                    <p class="text-lg font-semibold">
+                        support@puddle.com
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-sm text-teal-200">
+                        Response time
+                    </p>
+
+                    <p class="text-lg font-semibold">
+                        Usually within 24 hours
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Form -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">
+                Send us a message
+            </h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-5">
+
+                    <label class="block mb-2 font-semibold text-slate-700">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    >
+
+                </div>
+
+
+                <div class="mb-5">
+
+                    <label class="block mb-2 font-semibold text-slate-700">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    >
+
+                </div>
+
+
+                <div class="mb-5">
+
+                    <label class="block mb-2 font-semibold text-slate-700">
+                        Message
+                    </label>
+
+                    <textarea
+                        rows="5"
+                        name="message"
+                        placeholder="How can we help?"
+                        class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl transition"
+                >
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
