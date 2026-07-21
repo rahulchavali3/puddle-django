@@ -140,17 +140,10 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
----
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
 
 ---
 
-### 4. Navigate to the Django project
+### 3. Navigate to the Django project
 
 ```bash
 cd puddle
@@ -158,7 +151,7 @@ cd puddle
 
 ---
 
-### 5. Apply database migrations
+### 4. Apply database migrations
 
 ```bash
 python manage.py migrate
@@ -166,7 +159,7 @@ python manage.py migrate
 
 ---
 
-### 6. Create a superuser
+### 5. Create a superuser
 
 ```bash
 python manage.py createsuperuser
@@ -174,7 +167,7 @@ python manage.py createsuperuser
 
 ---
 
-### 7. Start the development server
+### 6. Start the development server
 
 ```bash
 python manage.py runserver
@@ -288,7 +281,7 @@ Puddle is currently being developed and improved with new features and refinemen
 
 ### Rahul Chavali
 
-B.Tech Information Technology graduate and aspiring Java Full Stack Developer passionate about building practical web applications and learning modern software development technologies.
+Aspiring Full Stack Developer passionate about building practical web applications and learning modern software development technologies.
 
 ---
 
