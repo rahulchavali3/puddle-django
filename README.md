@@ -1,4 +1,4 @@
-# 🛍️ Puddle
+# 🛍️ Puddle - Your local marketplace
 
 ### A modern local marketplace built with Django
 
