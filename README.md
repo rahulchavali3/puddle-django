@@ -32,21 +32,14 @@ The goal of Puddle is to create a simple and intuitive platform where people can
 
 <img width="1900" height="875" alt="image" src="https://github.com/user-attachments/assets/65f1975c-3683-4ef1-baf8-9ab3707b5c43" />
 
-![Home Page](screenshots/home.png)
-
 ### Browse Items
 
 <img width="1887" height="870" alt="image" src="https://github.com/user-attachments/assets/1d6a4bb1-d848-487a-92af-b61e188d66c1" />
-
-![Browse Items](screenshots/browse.png)
 
 ### Item Details
 
 <img width="1896" height="900" alt="image" src="https://github.com/user-attachments/assets/3d0fc057-9a9c-4d4e-8b34-22cf0c2624ce" />
 
-![Item Details](screenshots/item-details.png)
-
----
 
 ## 🛠️ Tech Stack
 
